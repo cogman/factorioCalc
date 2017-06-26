@@ -3,8 +3,8 @@ package com.cogman.dagger2.factorio;
 import com.cogman.dagger2.factorio.factory.*;
 import com.cogman.dagger2.factorio.power.Fuel;
 import com.cogman.dagger2.factorio.power.PowerSource;
-import com.cogman.dagger2.factorio.power.SolarPanel;
-import com.cogman.dagger2.factorio.rawmaterial.Coal;
+import com.cogman.dagger2.factorio.power.SteamEngine;
+import com.cogman.dagger2.factorio.rawmaterial.RawWood;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 
@@ -16,13 +16,13 @@ public class FactorioModule extends AbstractModule {
     }
 
     @Provides
-    Fuel fuel(Coal coal) {
-        return coal;
+    Fuel fuel(RawWood rawWood) {
+        return rawWood;
     }
 
     @Provides
-    PowerSource powerSource(SolarPanel solarPanel) {
-        return solarPanel;
+    PowerSource powerSource(SteamEngine steamEngine) {
+        return steamEngine;
     }
 
     @Provides
