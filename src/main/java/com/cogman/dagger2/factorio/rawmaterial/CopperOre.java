@@ -3,6 +3,7 @@ package com.cogman.dagger2.factorio.rawmaterial;
 import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class CopperOre implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public CopperOre(ProductionCalc minerCalc) {
+    @Inject CopperOre(ProductionCalc minerCalc) {
         requirements = Collections.unmodifiableMap(minerCalc.getProductionCosts(MINING_TIME));
     }
 

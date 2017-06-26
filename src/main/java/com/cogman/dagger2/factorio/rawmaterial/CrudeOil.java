@@ -3,6 +3,7 @@ package com.cogman.dagger2.factorio.rawmaterial;
 import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
@@ -12,7 +13,7 @@ public class CrudeOil implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public CrudeOil(ProductionCalc pumpCalc) {
+    @Inject CrudeOil(ProductionCalc pumpCalc) {
         requirements = Collections.unmodifiableMap(pumpCalc.getProductionCosts(PUMP_TIME));
     }
 

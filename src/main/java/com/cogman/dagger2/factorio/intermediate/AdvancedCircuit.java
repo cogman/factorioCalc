@@ -3,6 +3,7 @@ package com.cogman.dagger2.factorio.intermediate;
 import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class AdvancedCircuit implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public AdvancedCircuit(ProductionCalc plantCalc, CopperCable copperCable, ElectronicCircuit electronicCircuit, PlasticBar plasticBar) {
+    @Inject AdvancedCircuit(ProductionCalc plantCalc, CopperCable copperCable, ElectronicCircuit electronicCircuit, PlasticBar plasticBar) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(plantCalc.getProductionCosts(CRAFTING_TIME));
         powerRequirements.put(copperCable, BigDecimal.valueOf(4));
         powerRequirements.put(electronicCircuit, BigDecimal.valueOf(2));

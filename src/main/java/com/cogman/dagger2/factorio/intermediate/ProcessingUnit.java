@@ -3,6 +3,7 @@ package com.cogman.dagger2.factorio.intermediate;
 import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class ProcessingUnit implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public ProcessingUnit(ProductionCalc craftCalc, AdvancedCircuit advancedCircuit, ElectronicCircuit electronicCircuit, SulfuricAcid sulfuricAcid) {
+    @Inject ProcessingUnit(ProductionCalc craftCalc, AdvancedCircuit advancedCircuit, ElectronicCircuit electronicCircuit, SulfuricAcid sulfuricAcid) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(craftCalc.getProductionCosts(CRAFTING_TIME));
         powerRequirements.put(sulfuricAcid, BigDecimal.valueOf(5));
         powerRequirements.put(electronicCircuit, BigDecimal.valueOf(20));

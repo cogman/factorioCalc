@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 import com.cogman.dagger2.factorio.rawmaterial.CrudeOil;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class PetroleumGas implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public PetroleumGas(ProductionCalc refineryCalc, CrudeOil crudeOil) {
+    @Inject PetroleumGas(ProductionCalc refineryCalc, CrudeOil crudeOil) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(refineryCalc.getProductionCosts(GAS_TIME));
         powerRequirements.put(crudeOil, BigDecimal.valueOf(100));
         powerRequirements.replaceAll((r, b)->b.divide(BigDecimal.valueOf(55), MathContext.DECIMAL128));

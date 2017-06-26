@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 import com.cogman.dagger2.factorio.rawmaterial.Coal;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class PlasticBar implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public PlasticBar(ProductionCalc chemCalc, Coal coal, PetroleumGas petroleumGas) {
+    @Inject PlasticBar(ProductionCalc chemCalc, Coal coal, PetroleumGas petroleumGas) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(chemCalc.getProductionCosts(CRAFTING_TIME));
         powerRequirements.compute(coal, (recipe, v)->{
             if (v == null)

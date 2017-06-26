@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 import com.cogman.dagger2.factorio.rawmaterial.CopperOre;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class CopperPlate implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public CopperPlate(ProductionCalc furnaceCale, CopperOre copperOre) {
+    @Inject CopperPlate(ProductionCalc furnaceCale, CopperOre copperOre) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(furnaceCale.getProductionCosts(SMELTING_TIME));
         powerRequirements.put(copperOre, BigDecimal.ONE);
         requirements = Collections.unmodifiableMap(powerRequirements);

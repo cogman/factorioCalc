@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 import com.cogman.dagger2.factorio.rawmaterial.IronOre;
 
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class IronPlate implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    public IronPlate(ProductionCalc furnaceCalc, IronOre ironOre) {
+    @Inject IronPlate(ProductionCalc furnaceCalc, IronOre ironOre) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(furnaceCalc.getProductionCosts(SMELTING_TIME));
         powerRequirements.put(ironOre, BigDecimal.ONE);
         requirements = Collections.unmodifiableMap(powerRequirements);
