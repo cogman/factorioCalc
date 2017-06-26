@@ -13,7 +13,7 @@ public class ProductionCalc {
     private final BigDecimal powerUsageRatio;
     private final PowerSource powerSource;
 
-    @Inject ProductionCalc(Factory factory, PowerSource powerSource) {
+    @Inject public ProductionCalc(Factory factory, PowerSource powerSource) {
         this.powerSource = powerSource;
         this.powerUsageRatio = factory.powerDraw().divide(factory.productionSpeed(), MathContext.DECIMAL128);
     }
