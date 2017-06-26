@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class SulfuricAcid implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject SulfuricAcid(ProductionCalc chemCalc, Sulfur sulfur, IronPlate ironPlate) {
+    @Inject SulfuricAcid(@Named("chemPlant") ProductionCalc chemCalc, Sulfur sulfur, IronPlate ironPlate) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(chemCalc.getProductionCosts(COOKING_TIME));
         powerRequirements.put(sulfur, BigDecimal.valueOf(5));
         powerRequirements.put(ironPlate, BigDecimal.ONE);

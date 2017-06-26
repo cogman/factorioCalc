@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Collections;
@@ -15,7 +16,7 @@ public class CopperCable implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject CopperCable(ProductionCalc craftCalc, CopperPlate copperOre) {
+    @Inject CopperCable(@Named("assemblyMachine") ProductionCalc craftCalc, CopperPlate copperOre) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(craftCalc.getProductionCosts(CRAFTING_TIME));
         powerRequirements.put(copperOre, BigDecimal.ONE);
         powerRequirements.replaceAll((r, b)->b.divide(BigDecimal.valueOf(2), MathContext.DECIMAL128));

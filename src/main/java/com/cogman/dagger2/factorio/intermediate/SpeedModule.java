@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class SpeedModule implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject SpeedModule(ProductionCalc craftCalc, AdvancedCircuit advancedCircuit, ElectronicCircuit electronicCircuit) {
+    @Inject SpeedModule(@Named("assemblyMachine") ProductionCalc craftCalc, AdvancedCircuit advancedCircuit, ElectronicCircuit electronicCircuit) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(craftCalc.getProductionCosts(CRAFTING_TIME));
         powerRequirements.put(electronicCircuit, BigDecimal.valueOf(5));
         powerRequirements.put(advancedCircuit, BigDecimal.valueOf(5));

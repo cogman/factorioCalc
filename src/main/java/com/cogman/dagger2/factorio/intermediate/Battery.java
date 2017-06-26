@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ public class Battery implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject Battery(ProductionCalc chemCalc, CopperPlate copperPlate, IronPlate ironPlate, SulfuricAcid sulfuricAcid) {
+    @Inject Battery(@Named("chemPlant") ProductionCalc chemCalc, CopperPlate copperPlate, IronPlate ironPlate, SulfuricAcid sulfuricAcid) {
         Map<Recipe, BigDecimal> powerRequirements = new HashMap<>(chemCalc.getProductionCosts(COOKING_TIME));
         powerRequirements.put(sulfuricAcid, BigDecimal.valueOf(20));
         powerRequirements.put(ironPlate, BigDecimal.ONE);

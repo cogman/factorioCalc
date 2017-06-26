@@ -4,6 +4,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
@@ -13,7 +14,7 @@ public class IronOre implements Recipe {
 
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject IronOre(ProductionCalc productionCalc) {
+    @Inject IronOre(@Named("mining") ProductionCalc productionCalc) {
         requirements = Collections.unmodifiableMap(productionCalc.getProductionCosts(MINING_TIME));
     }
 

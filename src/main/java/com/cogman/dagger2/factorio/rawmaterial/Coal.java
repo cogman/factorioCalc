@@ -5,6 +5,7 @@ import com.cogman.dagger2.factorio.Recipe;
 import com.cogman.dagger2.factorio.factory.ProductionCalc;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Map;
@@ -14,7 +15,7 @@ public class Coal implements Recipe, Fuel {
     private static final BigDecimal JOULES = BigDecimal.valueOf(8_000_000);
     private final Map<Recipe, BigDecimal> requirements;
 
-    @Inject Coal(ProductionCalc productionCalc) {
+    @Inject Coal(@Named("mining") ProductionCalc productionCalc) {
         requirements = Collections.unmodifiableMap(productionCalc.getProductionCosts(MINING_TIME));
     }
 
