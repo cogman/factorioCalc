@@ -1,20 +1,23 @@
 package com.cogman.dagger2.factorio.rawmaterial;
 
-import com.cogman.dagger2.factorio.factory.ProductionCalc;
+import com.cogman.dagger2.factorio.factory.ElectricMinerFactory;
+import com.cogman.dagger2.factorio.factory.ProductionCalcFactory;
 import java.util.function.Supplier;
 
 public class CoalFactory implements Supplier<Coal>
 {
-	private final Supplier<ProductionCalc> productionCalcSupplier;
+	private static final CoalFactory INSTANCE = new CoalFactory();
 
-	public CoalFactory(Supplier<ProductionCalc> productionCalcSupplier)
+	private CoalFactory(){}
+
+	public static CoalFactory instance()
 	{
-		this.productionCalcSupplier = productionCalcSupplier;
+		return INSTANCE;
 	}
 
 	@Override
 	public Coal get()
 	{
-		return new Coal(productionCalcSupplier.get());
+		return new Coal(ProductionCalcFactory.instance().get(ElectricMinerFactory.instance()));
 	}
 }
