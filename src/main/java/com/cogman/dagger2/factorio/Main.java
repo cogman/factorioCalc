@@ -28,10 +28,14 @@ import com.cogman.dagger2.factorio.rawmaterial.CrudeOil;
 import com.cogman.dagger2.factorio.rawmaterial.IronOre;
 import com.cogman.dagger2.factorio.rawmaterial.RawWood;
 import com.cogman.dagger2.factorio.science.HighTechSciencePack;
+import com.cogman.dagger2.factorio.science.HighTechSciencePackFactory;
 
 public class Main {
     public static void main(String[] varargs) {
 		HighTechSciencePack highTechSciencePack = getHighTechScienceTechBad();
+		System.out.println(highTechSciencePack.getRequirements());
+
+		highTechSciencePack = getHighTechScienceTechFactory();
 		System.out.println(highTechSciencePack.getRequirements());
     }
 
@@ -79,5 +83,10 @@ public class Main {
 		ProcessingUnit processingUnit = new ProcessingUnit(chemCalc, advancedCircuit, electronicCircuit, sulfuricAcid);
 
 		return new HighTechSciencePack(assemblyMachineCalc, battery, copperCable, processingUnit, speedModule);
+	}
+
+	public static HighTechSciencePack getHighTechScienceTechFactory()
+	{
+		return HighTechSciencePackFactory.instance().get();
 	}
 }

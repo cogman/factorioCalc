@@ -18,6 +18,9 @@ public class AdvancedCircuitFactory implements Supplier<AdvancedCircuit>
 	@Override
 	public AdvancedCircuit get()
 	{
-		return new AdvancedCircuit(ProductionCalcFactory.instance().get(AssemblingMachineFactory.instance()));
+		return new AdvancedCircuit(ProductionCalcFactory.instance().get(AssemblingMachineFactory.instance()),
+				CopperCableFactory.instance().get(),
+				ElectronicCircuitFactory.instance().get(),
+				PlasticBarFactory.instance().get());
 	}
 }
