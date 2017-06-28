@@ -8,4 +8,4 @@
 out
 gen
 /target/
-/nb-configuration.xml
+nb-configuration.xml
