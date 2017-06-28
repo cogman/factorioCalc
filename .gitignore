@@ -7,5 +7,5 @@
 *.iml
 out
 gen
-target
-/nb-configuration.xml
+/target/
+nb-configuration.xml
